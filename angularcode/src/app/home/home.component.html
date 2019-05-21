@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th></th>
+        <th>To</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="expenses">
+      <tr  *ngFor="let exp of expenses">
+        <td>{{exp.from}}</td>
+        <td> Owes to</td>
+        <td>{{exp.to}}</td>
+        <td>{{exp.amount | number}}</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="!expenses">
+        <tr>
+            <td>loading...</td>
+          </tr>
+    </tbody> 
+  </table>
+</div>

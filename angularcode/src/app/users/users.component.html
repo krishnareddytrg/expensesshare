@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Users</h2>
+    <div class="float-right"><a class="nav-item nav-link" [routerLink]="['/user/add']" routerLinkActive="router-link-active" >Add User</a></div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users">
+          <td>{{u.name}}</td>
+          <td>{{u.email}}</td>
+          <td> <div (click)="deleteUser(u)" class="btn btn-info btn-lg">
+              <span class="glyphicon glyphicon-trash"></span> Delete 
+          </div></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>

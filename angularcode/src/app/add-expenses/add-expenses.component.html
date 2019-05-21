@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>Add Expenses</h2>
+    <form [formGroup]="expensesForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="userId">User</label>
+            <select  formControlName="userId" class="form-control" 
+            [ngClass]="{ 'is-invalid': submitted && f.userId.errors }">
+            <option value="">Select User</option>
+            <option *ngFor="let u of users" [value]="u._id">{{u.name}}</option>
+            </select>
+            <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
+                <div *ngIf="f.userId.errors.required">Please select user</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="text"  formControlName="amount" class="form-control" 
+            [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                <div *ngIf="f.amount.errors.required">Amount is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="expDate">Date</label>
+            <input type="text" bsDatepicker formControlName="expDate" class="form-control" 
+            [ngClass]="{ 'is-invalid': submitted && f.expDate.errors }" />
+            <div *ngIf="submitted && f.expDate.errors" class="invalid-feedback">
+                <div *ngIf="f.expDate.errors.required">Date is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Save</button>
+            <a [routerLink]="['/hpme']" class="btn btn-link">Cancel</a>
+            <div [ngClass]="{'loader':loading}"></div>
+        </div>
+    </form>
+</div>
